@@ -1,39 +1,29 @@
 #!/bin/bash
 
 echo _____________________________________
-echo Starting...
-echo
+echo Starting V2...
+echo ..
+echo ..
+echo ..
 
-echo Updating Fedora to the latest version
-sudo dnf update -y
+echo Updating Linux to the latest version
+sudo dnf update -y #Red Hat based
+sudo apt update && sudo apt upgrade -y #Debian based
+
+echo Installing apps and tools #ONE OF THESE DOESN"T WORK
+sudo dnf install dmenu xbacklight feh conky polybar rofi solaar xrandr curl wget arandr dunst btop brightnessctl vim sway waybar wdisplays grim slurp -y
+sudo apt install dmenu xbacklight feh conky polybar rofi solaar xrandr curl wget arandr dunst btop brightnessctl vim sway waybar wdisplays grim slurp -y
 
 echo Enabling Minimize Buttom - GNOME
 gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,close'
 
 echo Downloading and setting up custom font
-sudo dnf install curl wget -y
 cd ~/Downloads
 wget https://github.com/IdreesInc/Monocraft/releases/download/v4.0/Monocraft-nerd-fonts-patched.ttc
 sleep 10
 mkdir -p ~/.local/share/fonts
 mv ~/Downloads/Monocraft-nerd-fonts-patched.ttc ~/.local/share/fonts 
 fc-cache -fv
-
-echo Install flatpak apps
-sudo dnf install flatpak -y
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak install com.brave.Browser com.discordapp.Discord com.obsproject.Studio md.obsidian.Obsidian com.github.IsmaelMartinez.teams_for_linux dev.deedles.Trayscale -y
-
-echo Install linux apps
-sudo dnf install i3 i3status dmenu i3lock xbacklight feh conky polybar rofi solaar xrandr arandr dunst btop brightnessctl vim -y
-
-echo Creating a custom dpi 120 is default
-echo "Xft.dpi: 120" > ~/.Xresources
-xrdb "-merge" ~/.Xresources
-# exec i3 
-
-echo Improving trackpad experience
-sudo cp ~/Linux-Setup/Files/40-libinput.conf /usr/share/X11/xorg.conf.d/
 
 echo Setting up aliases  
 cp -f ~/Linux-Setup/Files/.bashrc ~/
@@ -56,11 +46,6 @@ cp ~/Linux-Setup/Files/launch.sh ~/.config/polybar/
 cp ~/Linux-Setup/Files/config.ini ~/.config/polybar/
 chmod +x ~/.config/polybar/launch.sh
 
-echo Setting up i3 config
-mkdir -p ~/.config/i3/
-cp ~/Linux-Setup/Files/i3-config ~/.config/i3/
-mv ~/.config/i3/i3-config ~/.config/i3/config
-
 echo Setting up scripts
 mkdir ~/.scripts
 cd ~/.scripts
@@ -74,7 +59,6 @@ chmod +x nerd-radar.sh rick-roll.sh startup.sh
 cd ~
 
 echo Setting up Sway
-sudo dnf install sway waybar wdisplays grim slurp -y
 mkdir -p ~/.config/sway ~/.config/waybar
 cp ~/Linux-Setup/Files/Sway/config ~/.config/sway/
 cp ~/Linux-Setup/Files/Sway/config.jsonc ~/.config/waybar/
@@ -95,9 +79,9 @@ cd ~/Documents
 mkdir Trash Important
 
 echo
-echo
+echo # clear screen
 echo ___________________________________________________________________________
-echo Finished! Check out the docs for more information.
+echo Finished! 
 echo . . . . . . . . . . . . . . . . . . . . . . . . . .
 echo Rebooting in 15 seconds. 
 echo After reboot, click the settings icon in the bottom right corner, then click i3/sway. 
