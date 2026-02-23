@@ -2,4 +2,4 @@
 
 Previous Linux Setup [Here](https://github.com/grpchatdstryr/Linux-Setup)
 
-Updated for using Sway, fix bugs, and updates. Enjoy!
+Updated for using Sway only, fix bugs, and updates. Enjoy!

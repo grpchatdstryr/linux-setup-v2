@@ -149,7 +149,7 @@ exec swayidle -w \
     bindsym $mod+Shift+space floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    # bindsym $mod+space focus mode_toggle
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
@@ -206,7 +206,7 @@ bar {
 }
 
 # Rofi (is a little buggy, but gets the job done)
-bindsym $mod+p exec rofi -show drun
+bindsym $mod+Space exec rofi -show drun
 
 
 # Natural Scrolling
@@ -259,3 +259,20 @@ bindsym $mod+Shift+r exec swaymsg reload
 bindsym $mod+m exec waybar
 
 include /etc/sway/config.d/*
+
+bindsym $mod+Shift+x exec swaynag \
+  --background 1e1e2e \
+  --text cdd6f4 \
+  --border 89b4fa \
+  --border-bottom 89b4fa \
+  --button-background 313244 \
+  --button-text cdd6f4 \
+  --button-border 45475a \
+  --button-border-size 2 \
+  --message-padding 15 \
+  --button-padding 8 \
+  --details-border-size 0 \
+  -m "⏻  Power Menu" \
+  -B "  Shutdown" "systemctl poweroff" \
+  -B "󰜉  Reboot" "systemctl reboot" \
+  -B "󰍃  Logout" "swaymsg exit"

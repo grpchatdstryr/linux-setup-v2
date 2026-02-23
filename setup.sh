@@ -7,11 +7,11 @@ echo ..
 echo ..
 
 echo Updating Linux to the latest version
-sudo dnf update -y #Red Hat based
+# sudo dnf update -y #Red Hat based
 sudo apt update && sudo apt upgrade -y #Debian based
 
 echo Installing apps and tools #ONE OF THESE DOESN"T WORK
-sudo dnf install dmenu xbacklight feh conky polybar rofi solaar xrandr curl wget arandr dunst btop brightnessctl vim sway waybar wdisplays grim slurp -y
+# sudo dnf install dmenu xbacklight feh conky polybar rofi solaar xrandr curl wget arandr dunst btop brightnessctl vim sway waybar wdisplays grim slurp -y
 sudo apt install dmenu xbacklight feh conky polybar rofi solaar xrandr curl wget arandr dunst btop brightnessctl vim sway waybar wdisplays grim slurp -y
 
 echo Enabling Minimize Buttom - GNOME
