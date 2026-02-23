@@ -26,52 +26,35 @@ mv ~/Downloads/Monocraft-nerd-fonts-patched.ttc ~/.local/share/fonts
 fc-cache -fv
 
 echo Setting up aliases  
-cp -f ~/Linux-Setup/Files/.bashrc ~/
+### cp -f ~/Linux-Setup/Files/.bashrc ~/
+echo "[WARNING] YOU NEED BASH RC FILE!"
+
+
 cp -f ~/Linux-Setup/Files/.bash_aliases ~/
 source ~/.bashrc
 #use \cp -f .... if it doesn't work
 
-echo Setting up wallpaper
+echo Copying wallpapers
 mkdir ~/Pictures
 mkdir -p ~/Pictures/Wallpapers
 cp ~/Linux-Setup/Images/Wallpaper.png ~/Pictures/Wallpapers/
+
+echo Setting up Sway
+mkdir -p ~/.config/sway ~/.config/waybar
+cp ~/Linux-Setup/Files/Sway/config ~/.config/sway/
+
+echo Setting up Waybar
+cp ~/Linux-Setup/Files/Sway/config.jsonc ~/.config/waybar/
+cp ~/Linux-Setup/Files/Sway/style.css ~/.config/waybar/
 
 echo Setting up rofi
 mkdir -p ~/.config/rofi
 cp ~/Linux-Setup/Files/config.rasi ~/.config/rofi/
 
-echo Setting up polybar
-mkdir -p ~/.config/polybar
-cp ~/Linux-Setup/Files/launch.sh ~/.config/polybar/
-cp ~/Linux-Setup/Files/config.ini ~/.config/polybar/
-chmod +x ~/.config/polybar/launch.sh
 
-echo Setting up scripts
-mkdir ~/.scripts
-cd ~/.scripts
-echo "xdg-open https://www.youtube.com/watch?v=fMMEM-aGihA" > nerd-radar.sh
-echo "xdg-open https://www.youtube.com/watch?v=dQw4w9WgXcQ" > rick-roll.sh
-echo '#!/bin/bash' >> startup.sh
-echo feh --bg-fill ~/Pictures/Wallpapers/Wallpaper.png >> startup.sh
-echo bash ~/.config/polybar/launch.sh >> startup.sh
-echo i3-msg restart >> startup.sh
-chmod +x nerd-radar.sh rick-roll.sh startup.sh
-cd ~
 
-echo Setting up Sway
-mkdir -p ~/.config/sway ~/.config/waybar
-cp ~/Linux-Setup/Files/Sway/config ~/.config/sway/
-cp ~/Linux-Setup/Files/Sway/config.jsonc ~/.config/waybar/
-cp ~/Linux-Setup/Files/Sway/style.css ~/.config/waybar/
-
-echo ---- Setting Up Obsidian Directories - Personal Setup ----
-cd ~
-mkdir -p Documents/Obsidian
-cd Documents/Obsidian
-mkdir General-Vault Improvement-Vault School-Vault Technical-Vault Bible-Vault Trash-Bin
-cd ~
-
-echo ---- Setting Up Other Directories ----
+echo Add Personal Directories
+mkdir -p ~/Documents/Obsidian
 cd Pictures
 mkdir Wallpapers Icons Folder-Icons Screenshots
 mkdir ~/Downloads/Trash
@@ -83,11 +66,16 @@ echo # clear screen
 echo ___________________________________________________________________________
 echo Finished! 
 echo . . . . . . . . . . . . . . . . . . . . . . . . . .
-echo Rebooting in 15 seconds. 
-echo After reboot, click the settings icon in the bottom right corner, then click i3/sway. 
-sleep 15
-echo ___________________________________________________________________________
+clear
+echo Rebooting in seconds: 
+for ((i = 10; i > 0; i--));
+do
+    echo $i
+    sleep 1
+done
 
+echo ___________________________________________________________________________
+sleep 2
 echo Rebooting Now...
 sleep 2
 reboot
