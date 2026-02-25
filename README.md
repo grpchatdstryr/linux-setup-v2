@@ -1,5 +1,7 @@
 ### New Linux Setup (V2)
 
+(include screenshot of home screen)
+
 Previous Linux Setup [Here](https://github.com/grpchatdstryr/Linux-Setup)
 
 Updated for using Sway only, fix bugs, and updates. Enjoy!
